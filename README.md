@@ -1,5 +1,13 @@
 # 1. Flask + WSGI + Apache2
-
+本プロジェクトはRaspberry Pi上にApache+WSGIを稼働させ、PythonのWebフレームワークであるFlaskからラズパイのカメラ映像を配信するものである。
+``` sh
+.
+|-app.py(Flaskのプログラム)
+|-camera_pi.py(Picameraを制御するプログラム)
+|-flask_app.wsgi(WSGI読み込み用)
+|-templates
+    |- index.html(Jinja2 テンプレート)
+```
 ## 1.1. 実施環境
 * Raspberry Pi 3 Model B
 * Raspbian Stretch
@@ -69,8 +77,16 @@
       ```
     
     * wsgi有効化\
-        上記記事の"VirtualHost設定反映"後にそのままApacheを再起動するとエラーが発生するかもしれない。
+        上記記事の"VirtualHost設定反映"後にそのままApacheを再起動すると下記のようなエラーが発生するかもしれない。
         自分はwsgiを有効化することでエラーが解消された。
+        * 参考 http://bit.ly/2x57uZv
         ``` sh
+         エラー内容
+        tarting httpd: Syntax error on line 10 of /etc/xxxxx/xxxxx/xxxxx.conf:Invalid command 'WSGIDaemonProcess', perhaps misspelled or defined by a module ot included in the server configuration
+        
+        下記で有効化
         sudo a2enmod wsgi
+
+        Apacheリロード
+        sudo systemctl reload apache2.service
         ```
