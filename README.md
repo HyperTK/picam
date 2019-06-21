@@ -23,6 +23,7 @@
    * https://urashita.com/archives/26622
    * https://qiita.com/rsm223_rip/items/c6105d22ba360623530a
         ``` sh
+        wget https://github.com/jjhelmus/berryconda/releases/download/v2.0.0/Berryconda3-2.0.0-Linux-armv7l.sh
         chmod +x Berryconda3-2.0.0-Linux-armv7l.sh
         ./Berryconda3-2.0.0-Linux-armv7l.sh
         ```
